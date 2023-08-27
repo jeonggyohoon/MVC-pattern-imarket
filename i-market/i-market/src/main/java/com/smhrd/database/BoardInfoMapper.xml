@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.database.BoardInfoMapper">
+
+	<insert id="BoardUpLoad" parameterType="BoardInfo">
+		insert into t_boardinfo values(t_boardinfo_seq.nextval, #{b_title},
+		#{b_content}, sysdate, #{user_id}, 0, 0, #{user_nick},#{b_file}, 0)
+	</insert>
+	
+	<insert id="CommentUpLoad" parameterType="CommentInfo">
+		insert into t_commentinfo values(t_commentinfo_seq.nextval, #{b_idx},
+		#{cmt_content}, sysdate, #{user_id}, 0, #{user_nick})
+	</insert>
+
+	<!-- <select id="selectMember" resultType="UserInfo"
+		parameterType="UserInfo">
+		select * from t_userinfo where user_id = #{user_id} and user_pw = #{user_pw}
+	</select> -->
+
+	<select id="showNews" resultType="NewsInfo">
+		select * from t_news order by n_date desc
+	</select>
+	
+	<select id="showBoardMain" resultType="BoardInfo">
+		 select * from t_boardinfo order by b_views desc
+	</select>
+
+	<select id="showBoard" resultType="BoardInfo">
+		select * from t_boardinfo order by uploaded_at desc
+	</select>
+
+	<select id="showBoardTitle" resultType="BoardInfo">
+		select * from t_boardinfo where b_title like '%'||#{b_title}||'%' order by uploaded_at desc
+	</select>
+
+	<select id="showBoardUser_id" resultType="BoardInfo">
+		select * from t_boardinfo where user_id like '%'||#{user_id}||'%' order by uploaded_at desc
+	</select>
+	
+	<select id="showBoardDetail" parameterType="BoardInfo" resultType="BoardInfo">
+	
+		select * from t_boardinfo where b_idx = #{b_idx}
+	</select>
+	
+	<select id="showComment" resultType="CommentInfo" parameterType="CommentInfo">
+		select * from t_commentinfo where b_idx = #{b_idx} order by uploaded_at desc
+	</select>
+	
+	<select id="showUpdateComment" resultType="CommentInfo" parameterType="CommentInfo">
+		select * from t_commentinfo where cmt_idx = #{cmt_idx}
+	</select>
+	
+	<update id="BoardUpdate" parameterType="BoardInfo">
+		update t_boardinfo set b_title = #{b_title}, b_content = #{b_content}, b_file = #{b_file}  where b_idx = #{b_idx}
+	</update>
+	
+	<update id="BoardView" parameterType="BoardInfo">
+		update t_boardinfo set b_views = #{b_views}  where b_idx = #{b_idx}
+	</update>
+	
+	<update id="BoardLike" parameterType="BoardInfo">
+		update t_boardinfo set b_likes = #{b_likes}  where b_idx = #{b_idx}
+	</update>
+	
+	<update id="CommentCn" parameterType="BoardInfo">
+		update t_boardinfo comment_count = #{comment_count}  where b_idx = #{b_idx}
+	</update>
+	
+	<update id="CommentUpdate" parameterType="CommentInfo">
+		update t_commentinfo set cmt_content = #{cmt_content}  where cmt_idx = #{cmt_idx}
+	</update>
+	
+	<delete id="BoardDelete" parameterType="BoardInfo">
+		delete from t_boardinfo where b_idx = #{b_idx}
+	</delete>
+
+	<delete id="CommentDelete" parameterType="CommentInfo">
+		delete from t_commentinfo where cmt_idx = #{cmt_idx}
+	
+	</delete>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.database.hifiveMapper">
+
+	<insert id="itemUpload"
+		parameterType="com.main.model.t_iteminfoDTO">
+		insert into t_iteminfo values(t_iteminfo_SEQ.nextval,
+		#{item_name, jdbcType=VARCHAR}, #{item_price}, #{item_info,
+		jdbcType=VARCHAR}, #{item_category, jdbcType=VARCHAR}, systimestamp,
+		#{item_photo, jdbcType=VARCHAR}, #{user_id, jdbcType=VARCHAR},
+		#{user_addr_at, jdbcType=VARCHAR}, #{user_addr, jdbcType=VARCHAR},
+		#{item_bargain_YN, jdbcType=CHAR}, #{item_status}, #{item_view})
+	</insert>
+	
+	<insert id="barUpload" parameterType="com.main.model.itemBargainDTO">
+		insert into t_bargain values(seq_itembargain.nextval, #{item_idx}, #{user_id, jdbcType=VARCHAR}, #{bar_price})
+	</insert>
+	
+	<select id="showItem" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo order by item_idx
+	</select>
+	
+	<select id="showItemHit" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo order by item_view desc
+	</select>
+	
+	<select id="showItemMy" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo where user_id=#{user_id, jdbcType=VARCHAR} order by item_idx desc
+	</select>
+	
+	<select id="showBargain" resultType="com.main.model.itemBargainDTO">
+		select * from t_bargain where item_idx=#{item_idx} order by bar_price
+	</select>
+	
+	<select id="showItemDetail" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo where item_idx=#{item_idx}
+	</select>
+	
+	<select id="timeToUpload" resultType="com.main.model.t_iteminfoDTO">
+		select uploaded_at from t_iteminfo where item_idx=#{item_idx}
+	</select>
+	
+	<select id="searchItem" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo where item_name like '%'||#{item_name}||'%' order by item_idx
+	</select>
+	
+	<select id="searchItemCategory" resultType="com.main.model.t_iteminfoDTO">
+		select * from t_iteminfo where item_category like '%'||#{item_category}||'%' order by item_idx
+	</select>
+	<update id="ViewUp" parameterType="com.main.model.t_iteminfoDTO">
+		update t_iteminfo set item_view = #{item_view} where item_idx = #{item_idx}
+	</update>
+	
+</mapper>

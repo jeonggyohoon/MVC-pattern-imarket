@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.database.ChatMapper">
+	<insert id="createChat" parameterType="ChatRoom">
+	
+		insert into t_chatroominfo values (T_CHATROOMINFO_SEQ.nextval, #{croom_title, jdbcType=VARCHAR}, #{croom_content, jdbcType=VARCHAR}, '2', sysdate, #{user_id, jdbcType=VARCHAR}, #{to_id, jdbcType=VARCHAR})
+	</insert>
+	<select id="showChatRoom" resultType="ChatRoom" parameterType="ChatRoom">
+		
+		select distinct a.croom_idx, a.croom_title, a.croom_content, a.croom_limit, a.croom_at, a.user_id, a.to_id from t_chatroominfo a left join t_chattinginfo b on b.croom_idx = a.croom_idx where b.talker = (select distinct user_id from t_userinfo where user_id = #{user_id, jdbcType=VARCHAR}) or a.user_id = #{user_id, jdbcType=VARCHAR} or a.to_id = #{user_id, jdbcType=VARCHAR} 
+		<!-- select * from t_chatroominfo a left join t_chattinginfo b on a.user_id = b.talker where b.user_nick = (select distinct user_nick  from t_userinfo  where user_id = #{user_id}) , jdbcType=VARCHAR --> 
+		<!-- select * from t_chatroominfo where user_id = #{user_id, jdbcType=VARCHAR} order by croom_at desc -->
+	</select>
+	<select id="chatRoomIdx" resultType="ChatRoom" parameterType="ChatRoom">
+	
+		select * from t_chatroominfo where user_id = #{user_id, jdbcType=VARCHAR} and to_id = #{to_id, jdbcType=VARCHAR} and croom_title = #{croom_title, jdbcType=VARCHAR}
+	</select>
+	<select id="showChat" resultType="Chatting" parameterType="Chatting">
+	
+		select * from t_chattinginfo where croom_idx = #{croom_idx}
+	</select>
+	<insert id="sendChat" parameterType="Chatting">
+	
+		insert into T_CHATTINGINFO values (T_CHATTINGINFO_SEQ.nextval, #{croom_idx}, #{talker, jdbcType=VARCHAR}, #{talking, jdbcType=VARCHAR}, sysdate)
+	</insert>
+</mapper>

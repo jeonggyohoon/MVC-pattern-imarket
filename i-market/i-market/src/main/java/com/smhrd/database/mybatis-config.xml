@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="com/smhrd/database/db.properties"></properties>
+    <typeAliases>
+  	<typeAlias type="com.main.model.WebMemberDTO" alias="WebMember"/>
+  	<typeAlias type="com.smhrd.model.chat.t_chatroominfoDTO" alias="ChatRoom"/>
+	<typeAlias type="com.smhrd.model.chat.t_chattinginfoDTO" alias="Chatting"/>
+	<typeAlias type="com.smhrd.model.user.t_userinfoDTO" alias="User"/>
+	<typeAlias type="com.smhrd.model.board.BoardInfoDTO" alias="BoardInfo"/>
+	<typeAlias type="com.smhrd.model.board.CommentInfoDTO" alias="CommentInfo"/>
+	<typeAlias type="com.smhrd.model.news.NewsInfoDTO" alias="NewsInfo"/>
+</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/smhrd/database/WebMemberMapper.xml"/>
+    <mapper resource="com/smhrd/database/hifiveMapper.xml" />
+    <mapper resource="com/smhrd/database/UserMapper.xml"/>
+    <mapper resource="com/smhrd/database/ChatMapper.xml"/>
+    <mapper resource="com/smhrd/database/BoardInfoMapper.xml"/>
+    </mappers>
+</configuration>
