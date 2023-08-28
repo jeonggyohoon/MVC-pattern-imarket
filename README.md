@@ -62,6 +62,10 @@
 
 **comment**
 
-- AJAX 비동기 리스트 출력 시 .jsp로 리스트 값을 바로 보내 <c:foreach>사용에 어려움이 있었다.
+- JSP에서 POST방식으로 TYPE=FILE을 controller로 보낼 때 에러 발생.
+
+![5](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/64cfd8dc-4d01-49de-88d4-3da75fd05de4)
+
+#### 1. 비동기 처리 서버의 작업 순서가 JAVA>JSTL>HTML>JavaScript 이기 때문에 에러가 뜬다.
 
 
