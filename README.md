@@ -36,7 +36,7 @@
 - 게시판 메인 페이지
 <br/>
 
-![i-market-new](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/89d1fa67-9b63-40f3-90b1-4af0b3f6c837)
+![i-market-new (3)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/5f129805-236f-47ed-a7e5-a8fb369817d1)
 
 > code location
 >>   
