@@ -39,7 +39,7 @@
 ![i-market-new (3)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/5f129805-236f-47ed-a7e5-a8fb369817d1)
 
 > code location
->>   
+>> board / boardMain.jsp  
 <br/>
 
 - 상세 게시판, 댓글 페이지
@@ -47,7 +47,7 @@
 
 ![i-market-new (1)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/d37233c4-003b-47ff-b7b7-aec83b21b121)
 > code location
->>   
+>> board / boardDetail.jsp  
 <br/>
 
 - 뉴스 페이지
@@ -55,7 +55,7 @@
 
 ![i-market-new (2)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/24fec971-500d-40fb-9a93-b8a5982208d3)
 > code location
->>   
+>> news.jsp  
 <br/>
 
 ---
