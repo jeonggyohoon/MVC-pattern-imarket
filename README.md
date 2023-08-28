@@ -66,6 +66,6 @@
 
 ![5](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/64cfd8dc-4d01-49de-88d4-3da75fd05de4)
 
-#### 1. 비동기 처리 서버의 작업 순서가 JAVA>JSTL>HTML>JavaScript 이기 때문에 에러가 뜬다.
+#### 1. getFilesystemName을 사용해서 파일을 불러와야 에러가 안난다.
 
-
+![6](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/a9af2556-ec48-41fc-96d1-70c22f958de2)
