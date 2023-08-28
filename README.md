@@ -33,7 +33,7 @@
   
 <br/>
 
-- 사진등록 페이지
+- 게시판 메인 페이지
 <br/>
 
 ![i-market-new](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/89d1fa67-9b63-40f3-90b1-4af0b3f6c837)
@@ -42,7 +42,21 @@
 >>   
 <br/>
 
+- 상세 게시판, 댓글 페이지
+<br/>
 
+![i-market-new (1)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/d37233c4-003b-47ff-b7b7-aec83b21b121)
+> code location
+>>   
+<br/>
+
+- 뉴스 페이지
+<br/>
+
+![i-market-new (2)](https://github.com/jeonggyohoon/MVC-pattern-imarket/assets/133930245/24fec971-500d-40fb-9a93-b8a5982208d3)
+> code location
+>>   
+<br/>
 
 
 
